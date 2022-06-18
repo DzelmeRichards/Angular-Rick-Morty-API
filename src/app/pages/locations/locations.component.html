@@ -1,0 +1,38 @@
+<div>
+  <div class="locations__title-container">
+    <h1 class="locations__title">Locations</h1>
+  </div>
+  <div>
+    <form class="locations__form" [formGroup]="locationsSearchForm">
+      <input
+        class="locations__input"
+        type="text"
+        placeholder="Search by Name"
+        formControlName="nameQuery"
+      />
+      <input
+        class="locations__input"
+        type="text"
+        placeholder="Search by Dimension"
+        formControlName="dimensionQuery"
+      />
+      <button class="locations__btn" (click)="filterbyQueries()" type="button">
+        Search
+      </button>
+    </form>
+  </div>
+  <div class="locations__card-container">
+    <div class="locations__card" *ngFor="let location of locations">
+      <p [routerLink]="['/locations', location.id]">
+        Name: {{ location.name }}
+      </p>
+      <p>Dimension: {{ location.dimension }}</p>
+      <p *ngIf="location">{{ location.residents.length }} known residents</p>
+    </div>
+  </div>
+  <div class="locations__load-more-btn-container">
+    <button class="locations__btn" (click)="getMoreLocations()">
+      Load more
+    </button>
+  </div>
+</div>

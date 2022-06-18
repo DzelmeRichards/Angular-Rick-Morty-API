@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/reset.scss';
+@import './styles/flexboxgrid.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Geo&display=swap');
+
+body { 
+  font-family: 'Geo', sans-serif;
+  background-color: #ecf0f0;
+  color: #46535d;
+}

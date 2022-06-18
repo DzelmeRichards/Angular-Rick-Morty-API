@@ -1,0 +1,13 @@
+<div class="single-location__container">
+  <div class="row center-xs">
+    <div class="col-xs-2">
+      <div class="single-location__card" *ngIf="location$ | async as location">
+        <span>ID: {{ location.id }}</span>
+        <span>Name: {{ location.name }}</span>
+        <span>Type: {{ location.type }}</span>
+        <span>Dimension: {{ location.dimension }}</span>
+        <span>{{ location.residents.length }} known residents</span>
+      </div>
+    </div>
+  </div>
+</div>

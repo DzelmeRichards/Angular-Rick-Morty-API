@@ -1,0 +1,17 @@
+.app__nav-container {
+  display: flex;
+  gap: 30px;
+  padding: 10px 0;
+  justify-content: center;
+  background-color: #dadedf;
+}
+
+.app__nav-link {
+  text-decoration: none;
+  color: #7a7978;
+  font-size: 20px;
+}
+
+.app__nav-link--active {
+  color: #46535d;
+}

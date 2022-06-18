@@ -1,0 +1,60 @@
+<div>
+  <div class="characters__title-container">
+    <h1 class="characters__title">Characters</h1>
+  </div>
+  <div>
+    <form class="characters__form" [formGroup]="charactersSearchForm">
+      <input
+        class="characters__input"
+        type="text"
+        placeholder="Search by Name"
+        formControlName="nameQuery"
+      />
+      <select class="characters__select" formControlName="genderQuery">
+        <option selected hidden value="">Select gender</option>
+        <option value="">All</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="genderless">Genderless</option>
+        <option value="unknown">Unknown</option>
+      </select>
+      <button class="characters__btn" (click)="filterbyQueries()" type="button">
+        Search
+      </button>
+    </form>
+  </div>
+  <div class="characters-card-container">
+    <div class="characters__card" *ngFor="let character of characters">
+      <img class="characters__img" [src]="character.image" alt="image" />
+      <div class="characters__card-info-container">
+        <p [routerLink]="['/characters', character.id]">
+          Name: {{ character.name }}
+        </p>
+        <p>Gender: {{ character.gender }}</p>
+        <p
+          class="characters__link"
+          [routerLink]="['/locations', character.origin.url.split('/').pop()]"
+        >
+          Origin: {{ character.origin.name }}
+        </p>
+        <p
+          class="characters__link"
+          [routerLink]="['/locations', character.location.url.split('/').pop()]"
+        >
+          Location: {{ character.location.name }}
+        </p>
+        <p *ngIf="character.episode.length % 10 !== 1">
+          Participates in {{ character.episode.length }} episodes
+        </p>
+        <p *ngIf="character.episode.length % 10 === 1">
+          Participates in {{ character.episode.length }} episode
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="characters__load-more-btn-container">
+    <button class="characters__btn" (click)="getMoreCharacters()">
+      Load more
+    </button>
+  </div>
+</div>
