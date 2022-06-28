@@ -53,7 +53,11 @@
     </div>
   </div>
   <div class="characters__load-more-btn-container">
-    <button class="characters__btn" (click)="getMoreCharacters()">
+    <button
+      *ngIf="this.nextPageLink"
+      class="characters__btn"
+      (click)="getMoreCharacters()"
+    >
       Load more
     </button>
   </div>

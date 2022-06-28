@@ -45,12 +45,12 @@ export class LocationsComponent implements OnInit, OnDestroy {
     const nameQuery = this.locationsSearchForm.get('nameQuery');
     const dimensionQuery = this.locationsSearchForm.get('dimensionQuery');
 
-    if (nameQuery?.value !== '' && dimensionQuery?.value !== '') {
+    if (nameQuery?.value && dimensionQuery?.value) {
       query = `?name=${nameQuery?.value}&dimension=${dimensionQuery?.value}`;
-    } else if (nameQuery?.value !== '') {
-      query = `?name=${nameQuery?.value}`;
+    } else if (nameQuery?.value) {
+      query = `?name=${nameQuery?.value}&dimension=`;
     } else {
-      query = `?dimension=${dimensionQuery?.value}`;
+      query = `?name=&dimension=${dimensionQuery?.value}`;
     }
     this.locationsSubscription = this.locationsService
       .fetchLocations(query)

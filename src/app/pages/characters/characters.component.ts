@@ -46,12 +46,12 @@ export class CharactersComponent implements OnInit, OnDestroy {
     const nameQuery = this.charactersSearchForm.get('nameQuery');
     const genderQuery = this.charactersSearchForm.get('genderQuery');
 
-    if (nameQuery?.value !== '' && genderQuery?.value !== '') {
+    if (nameQuery?.value && genderQuery?.value) {
       query = `?name=${nameQuery?.value}&gender=${genderQuery?.value}`;
-    } else if (nameQuery?.value !== '') {
-      query = `?name=${nameQuery?.value}`;
+    } else if (nameQuery?.value) {
+      query = `?name=${nameQuery?.value}&gender=`;
     } else {
-      query = `?gender=${genderQuery?.value}`;
+      query = `?name=&gender=${genderQuery?.value}`;
     }
     this.charactersSubscription = this.charactersService
       .fetchCharacters(query)

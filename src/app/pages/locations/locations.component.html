@@ -27,11 +27,23 @@
         Name: {{ location.name }}
       </p>
       <p>Dimension: {{ location.dimension }}</p>
-      <p *ngIf="location">{{ location.residents.length }} known residents</p>
+      <p *ngIf="location && location.residents.length > 1">
+        {{ location.residents.length }} known residents
+      </p>
+      <p *ngIf="location && location.residents.length === 1">
+        {{ location.residents.length }} known resident
+      </p>
+      <p *ngIf="location && location.residents.length < 1">
+        No known residents
+      </p>
     </div>
   </div>
   <div class="locations__load-more-btn-container">
-    <button class="locations__btn" (click)="getMoreLocations()">
+    <button
+      *ngIf="this.nextPageLink"
+      class="locations__btn"
+      (click)="getMoreLocations()"
+    >
       Load more
     </button>
   </div>
